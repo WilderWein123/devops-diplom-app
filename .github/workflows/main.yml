@@ -1,5 +1,5 @@
 env:
-  IMAGE_NAME: wilderwein123/
+  IMAGE_NAME: wilderwein123/devops-diplom-app
   KUBE_NAMESPACE: custom
   KUBE_DEPLOYMENT: devops-diplom-app-deployment.yaml
   KUBE_SERVICE: devops-diplom-app-service.yaml
@@ -59,6 +59,6 @@ jobs:
       - name: Deploy to Kubernetes
         run: |
           export KUBECONFIG=kubeconfig
-          kubectl --kubeconfig=kubeconfig apply -f k8s/deployment.yaml -n netology
-          kubectl --kubeconfig=kubeconfig apply -f k8s/service.yaml -n netology
-          kubectl --kubeconfig=kubeconfig rollout status deployment/nginx-test-app -n netology
+          kubectl --kubeconfig=kubeconfig apply -f k8s/deployment.yaml -n custom
+          kubectl --kubeconfig=kubeconfig apply -f k8s/service.yaml -n custom
+          kubectl --kubeconfig=kubeconfig rollout status deployment/devops-diplom-app -n custom
