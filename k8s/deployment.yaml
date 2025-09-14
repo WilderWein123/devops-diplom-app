@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: devops-diplom-app
+  namespace: custom
+  labels:
+    app: devops-diplom-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: devops-diplom-app
+  template:
+    metadata:
+      labels:
+        app: devops-diplom-app
+    spec:
+      containers:
+      - name: devops-diplom-app
+        image: wilderwein123/devops-diplom-app:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
