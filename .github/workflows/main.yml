@@ -1,8 +1,8 @@
 env:
-  IMAGE_NAME: tud777777/devops_diplom
-  KUBE_NAMESPACE: netology
-  KUBE_DEPLOYMENT: nginx-test-app-deployment.yaml
-  KUBE_SERVICE: nginx-test-app-service.yaml
+  IMAGE_NAME: wilderwein123/
+  KUBE_NAMESPACE: custom
+  KUBE_DEPLOYMENT: devops-diplom-app-deployment.yaml
+  KUBE_SERVICE: devops-diplom-app-service.yaml
   
 name: CI/CD Pipeline
 
@@ -35,8 +35,8 @@ jobs:
           context: .
           push: true
           tags: |
-            ${{ secrets.DOCKER_USERNAME }}/nginx-test-app:latest
-            ${{ secrets.DOCKER_USERNAME }}/nginx-test-app:${{ github.ref_name }}
+            ${{ secrets.DOCKER_USERNAME }}/devops-diplom-app:latest
+            ${{ secrets.DOCKER_USERNAME }}/devops-diplom-app:${{ github.ref_name }}
 
   deploy-to-kubernetes:
     runs-on: ubuntu-latest
