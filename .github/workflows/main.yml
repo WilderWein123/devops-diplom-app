@@ -57,11 +57,18 @@ jobs:
         with:
           version: 'latest'
 
-      - name: Configure Kubernetes Context
+      - name: Create kubeconfig
         run: |
-          echo "${{ secrets.KUBE_CONFIG_DATA }}" | base64 -d > kubeconfig
-          export KUBECONFIG=kubeconfig
+          mkdir -p $HOME/.kube/
 
+      - name: Authenticate to Kubernetes cluster
+        env:
+          KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
+        run: |
+          echo "${KUBE_CONFIG_DATA}" | base64 --decode > ${HOME}/.kube/config
+          kubectl config view
+          kubectl get nodes
+          
       - name: Deploy to Kubernetes
         run: |
           export KUBECONFIG=kubeconfig
