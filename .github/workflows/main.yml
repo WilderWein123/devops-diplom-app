@@ -63,7 +63,7 @@ jobs:
 
       - name: install yc
         run: |
-          curl -L "https://packages.gitlab.com/install/repositories/runner/gitlab-runner/script.deb.sh" | sudo bash
+          curl -sSL https://storage.yandexcloud.net/yandexcloud-yc/install.sh | bash
 
       - name: Authenticate to Kubernetes cluster
         env:
