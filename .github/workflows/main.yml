@@ -88,4 +88,6 @@ jobs:
         run: |
           kubectl apply -f k8s/deployment.yaml -n custom
           kubectl apply -f k8s/service.yaml -n custom
+          kubectl rollout restart deployment/devops-diplom-app -n custom
           kubectl rollout status deployment/devops-diplom-app -n custom
+          
